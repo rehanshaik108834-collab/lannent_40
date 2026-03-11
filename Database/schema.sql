@@ -1,5 +1,5 @@
-create DATABASE lannet
-USE lannet;
+create DATABASE lannent
+USE lannent;
 
 -- USERS
 CREATE TABLE USERS (
@@ -186,4 +186,5 @@ CREATE TABLE NOTIFICATIONS (
   created_at      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (notification_id),
   FOREIGN KEY (user_id) REFERENCES USERS(user_id)
+
 );
