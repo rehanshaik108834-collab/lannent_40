@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - Lannent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="client-my-projects.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                <a href="/" class="logo-link">
+                    <span class="logo-text">Lannent<span class="logo-accent">.</span></span>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <div class="nav-items">
+                    <a href="#" class="sidebar-item active" data-page="dashboard">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span class="label">Dashboard</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="projects">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 2H5a2 2 0 0 0-2 2v4m0 0v10a2 2 0 0 0 2 2h4m0 0h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4m0 0v4"></path>
+                        </svg>
+                        <span class="label">My Projects</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="post-task">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                        <span class="label">Post Task</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="hire-workers">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="label">Hire Workers</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="applications">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="label">Worker Applications</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="messages">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="label">Messages</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="wallet">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <path d="M1 10h22"></path>
+                        </svg>
+                        <span class="label">Wallet</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="analytics">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span class="label">Analytics</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="settings">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                        </svg>
+                        <span class="label">Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Collapse Toggle -->
+            <div class="sidebar-footer">
+                <button class="collapse-btn" id="collapseBtn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-content">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search projects, tasks, or messages...">
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="navbar-actions">
+                        <!-- Notifications -->
+                        <div class="notification-container">
+                            <button class="icon-button" id="notificationBtn">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                <span class="notification-dot"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown">
+                                <div class="dropdown-header">
+                                    <h3>Notifications</h3>
+                                    <button class="mark-all-read">Mark all read</button>
+                                </div>
+                                <div class="notification-list">
+                                    <div class="notification-item">
+                                        <div class="notification-icon" style="background-color: #dcfce7;">
+                                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="notification-content">
+                                            <p class="notification-title">Milestone approved</p>
+                                            <p class="notification-description">Payment of $500 has been released</p>
+                                            <span class="notification-time">2m ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <button class="view-all-link">View all notifications</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Messages -->
+                        <button class="icon-button">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="notification-dot" style="background-color: #3b82f6;"></span>
+                        </button>
+
+                        <!-- User Menu -->
+                        <div class="user-menu-container">
+                            <button class="user-button" id="userMenuBtn">
+                                <div class="user-avatar">JD</div>
+                                <span class="user-name">John Doe</span>
+                            </button>
+                            <div class="user-dropdown" id="userDropdown">
+                                <div class="user-info">
+                                    <p class="user-fullname">John Doe</p>
+                                    <p class="user-email">john@example.com</p>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                        <span>Profile</span>
+                                    </a>
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                                        </svg>
+                                        <span>Settings</span>
+                                    </a>
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 6v6l4 2"></path>
+                                        </svg>
+                                        <span>Help & Support</span>
+                                    </a>
+                                </div>
+                                <div class="user-menu-divider"></div>
+                                <a href="#" class="user-menu-item logout">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    <span>Sign Out</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <!-- Header Section -->
+                    <div class="my-projects-header">
+                        <div>
+                            <h1 class="page-title">My Projects</h1>
+                            <p class="page-subtitle">Manage all tasks you have posted.</p>
+                        </div>
+                        <a href="#" class="primary-button">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span>Post New Task</span>
+                        </a>
+                    </div>
+
+                    <!-- Tabs -->
+                    <div class="tabs-container">
+                        <div class="tabs-wrapper">
+                            <button class="tab-button active" data-tab="active">
+                                <span>Active Tasks</span>
+                                <span class="tab-count">3</span>
+                            </button>
+                            <button class="tab-button" data-tab="open">
+                                <span>Open Tasks</span>
+                                <span class="tab-count">2</span>
+                            </button>
+                            <button class="tab-button" data-tab="completed">
+                                <span>Completed Tasks</span>
+                                <span class="tab-count">3</span>
+                            </button>
+                            <button class="tab-button" data-tab="disputed">
+                                <span>Disputed Tasks</span>
+                                <span class="tab-count">2</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Projects Grid -->
+                    <div class="projects-container" id="projectsContainer">
+                        <!-- Projects will be inserted here by JavaScript -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <div class="empty-state-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="19" x2="12" y2="5"></line>
+                                <line x1="9" y1="12" x2="15" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3 class="empty-state-title">No projects found</h3>
+                        <p class="empty-state-description">You don't have any projects at the moment.</p>
+                        <a href="#" class="primary-button">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span>Post Your First Task</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="client-my-projects.js"></script>
+</body>
+</html>

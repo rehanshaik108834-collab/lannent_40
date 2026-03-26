@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Gig Workers - Lannent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hire-gig-workers.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="/" class="logo-link">
+                    <span class="logo-text">Lannent<span class="logo-accent">.</span></span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-items">
+                    <a href="#" class="sidebar-item" data-page="dashboard">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span class="label">Dashboard</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="projects">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 2H5a2 2 0 0 0-2 2v4m0 0v10a2 2 0 0 0 2 2h4m0 0h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4m0 0v4"></path>
+                        </svg>
+                        <span class="label">My Projects</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="post-task">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                        <span class="label">Post Task</span>
+                    </a>
+                    <a href="#" class="sidebar-item active" data-page="hire-workers">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="label">Hire Workers</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="applications">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="label">Worker Applications</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="messages">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="label">Messages</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="wallet">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <path d="M1 10h22"></path>
+                        </svg>
+                        <span class="label">Wallet</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="analytics">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span class="label">Analytics</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="settings">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                        </svg>
+                        <span class="label">Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="collapse-btn" id="collapseBtn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-content">
+                    <div class="search-container">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search projects, tasks, or messages...">
+                    </div>
+
+                    <div class="navbar-actions">
+                        <div class="notification-container">
+                            <button class="icon-button" id="notificationBtn">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                <span class="notification-dot"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown">
+                                <div class="dropdown-header">
+                                    <h3>Notifications</h3>
+                                    <button class="mark-all-read">Mark all read</button>
+                                </div>
+                                <div class="notification-list">
+                                    <div class="notification-item">
+                                        <div class="notification-icon" style="background-color: #dcfce7;">
+                                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="notification-content">
+                                            <p class="notification-title">Milestone approved</p>
+                                            <p class="notification-description">Payment of $500 has been released</p>
+                                            <span class="notification-time">2m ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <button class="view-all-link">View all notifications</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="icon-button">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="notification-dot" style="background-color: #3b82f6;"></span>
+                        </button>
+
+                        <div class="user-menu-container">
+                            <button class="user-button" id="userMenuBtn">
+                                <div class="user-avatar">JD</div>
+                                <span class="user-name">John Doe</span>
+                            </button>
+                            <div class="user-dropdown" id="userDropdown">
+                                <div class="user-info">
+                                    <p class="user-fullname">John Doe</p>
+                                    <p class="user-email">john@example.com</p>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                        <span>Profile</span>
+                                    </a>
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                                        </svg>
+                                        <span>Settings</span>
+                                    </a>
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 6v6l4 2"></path>
+                                        </svg>
+                                        <span>Help & Support</span>
+                                    </a>
+                                </div>
+                                <div class="user-menu-divider"></div>
+                                <a href="#" class="user-menu-item logout">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    <span>Sign Out</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <!-- Header -->
+                    <div class="page-header">
+                        <h1 class="page-title">Hire Gig Workers</h1>
+                        <p class="page-subtitle">Find skilled freelancers and invite them to collaborate on your project.</p>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="search-bar-container">
+                        <svg class="search-icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input
+                            type="text"
+                            id="searchQuery"
+                            placeholder="Search skills, technologies, or freelancer names..."
+                            class="search-bar-input"
+                        />
+                    </div>
+
+                    <!-- Main Grid: Sidebar + Workers -->
+                    <div class="workers-grid">
+                        <!-- LEFT SIDEBAR - FILTERS -->
+                        <aside class="filters-sidebar">
+                            <!-- Skills Filter -->
+                            <div class="filter-card">
+                                <h3 class="filter-title">Skills</h3>
+                                <div class="filter-items" id="skillsFilter"></div>
+                            </div>
+
+                            <!-- Experience Level Filter -->
+                            <div class="filter-card">
+                                <h3 class="filter-title">Experience Level</h3>
+                                <div class="filter-items">
+                                    <label class="filter-label">
+                                        <input type="checkbox" class="filter-checkbox" data-filter="experience" value="Entry" />
+                                        <span>Entry</span>
+                                    </label>
+                                    <label class="filter-label">
+                                        <input type="checkbox" class="filter-checkbox" data-filter="experience" value="Intermediate" />
+                                        <span>Intermediate</span>
+                                    </label>
+                                    <label class="filter-label">
+                                        <input type="checkbox" class="filter-checkbox" data-filter="experience" value="Expert" />
+                                        <span>Expert</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Hourly Rate Filter -->
+                            <div class="filter-card">
+                                <h3 class="filter-title">Hourly Rate</h3>
+                                <div class="rate-range-container">
+                                    <div class="rate-display">
+                                        <span id="rateMin">$0</span>
+                                        <span id="rateMax">$200+</span>
+                                    </div>
+                                    <input
+                                        type="range"
+                                        id="rateSlider"
+                                        min="0"
+                                        max="200"
+                                        step="5"
+                                        value="200"
+                                        class="rate-slider"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Rating Filter -->
+                            <div class="filter-card">
+                                <h3 class="filter-title">Minimum Rating</h3>
+                                <div class="filter-items">
+                                    <label class="filter-label rating-label">
+                                        <input type="radio" name="rating" class="filter-radio" value="4.5" data-filter="rating" />
+                                        <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                            <polygon points="12 2 15.09 10.26 24 10.5 18 16.16 20.09 24.5 12 20.16 3.91 24.5 6 16.16 0 10.5 8.91 10.26 12 2"></polygon>
+                                        </svg>
+                                        <span>4.5+</span>
+                                    </label>
+                                    <label class="filter-label rating-label">
+                                        <input type="radio" name="rating" class="filter-radio" value="4.0" data-filter="rating" />
+                                        <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                            <polygon points="12 2 15.09 10.26 24 10.5 18 16.16 20.09 24.5 12 20.16 3.91 24.5 6 16.16 0 10.5 8.91 10.26 12 2"></polygon>
+                                        </svg>
+                                        <span>4.0+</span>
+                                    </label>
+                                    <label class="filter-label rating-label">
+                                        <input type="radio" name="rating" class="filter-radio" value="3.5" data-filter="rating" />
+                                        <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                            <polygon points="12 2 15.09 10.26 24 10.5 18 16.16 20.09 24.5 12 20.16 3.91 24.5 6 16.16 0 10.5 8.91 10.26 12 2"></polygon>
+                                        </svg>
+                                        <span>3.5+</span>
+                                    </label>
+                                    <label class="filter-label rating-label">
+                                        <input type="radio" name="rating" class="filter-radio" value="0" data-filter="rating" checked />
+                                        <span>All ratings</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Availability Filter -->
+                            <div class="filter-card">
+                                <h3 class="filter-title">Availability</h3>
+                                <div class="filter-items">
+                                    <label class="filter-label">
+                                        <input type="checkbox" class="filter-checkbox" data-filter="availability" value="Available" />
+                                        <span>Available</span>
+                                    </label>
+                                    <label class="filter-label">
+                                        <input type="checkbox" class="filter-checkbox" data-filter="availability" value="Busy" />
+                                        <span>Busy</span>
+                                    </label>
+                                    <label class="filter-label">
+                                        <input type="checkbox" class="filter-checkbox" data-filter="availability" value="Not Available" />
+                                        <span>Not Available</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Clear Filters -->
+                            <button class="btn-clear-filters" id="clearFiltersBtn">
+                                Clear All Filters
+                            </button>
+                        </aside>
+
+                        <!-- RIGHT SECTION - WORKERS -->
+                        <div class="workers-section">
+                            <!-- Results Count -->
+                            <div class="results-header" id="resultsHeader"></div>
+
+                            <!-- Workers Grid -->
+                            <div class="workers-cards" id="workersContainer"></div>
+
+                            <!-- Empty State -->
+                            <div class="empty-state" id="emptyState" style="display: none;">
+                                <div class="empty-state-icon">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.35-4.35"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="empty-state-title">No freelancers found</h3>
+                                <p class="empty-state-text">Try adjusting your filters or search criteria</p>
+                                <button class="btn-clear-filters" id="clearFiltersEmptyBtn">
+                                    Clear Filters
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Worker Profile Modal -->
+    <div class="modal-backdrop" id="profileModal" style="display: none;">
+        <div class="modal-content profile-modal">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="modal-header-content" id="modalHeaderContent"></div>
+                <button class="modal-close-btn" id="modalCloseBtn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body" id="modalBody"></div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button class="btn-close-modal" id="btnCloseProfile">Close</button>
+                <button class="btn-invite-profile" id="btnInviteProfile">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    Invite to Project
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite Modal -->
+    <div class="modal-backdrop" id="inviteModal" style="display: none;">
+        <div class="modal-content invite-modal">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="inviteModalTitle"></h2>
+                    <p class="modal-subtitle">Send an invitation to collaborate on your project</p>
+                </div>
+                <button class="modal-close-btn" id="modalCloseInviteBtn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- Project Selection -->
+                <div class="form-group">
+                    <label class="form-label">Select Project</label>
+                    <select id="projectSelect" class="form-select">
+                        <option value="">Choose a project...</option>
+                    </select>
+                </div>
+
+                <!-- Invitation Message -->
+                <div class="form-group">
+                    <label class="form-label">Invitation Message</label>
+                    <textarea
+                        id="inviteMessage"
+                        placeholder="Hi,\n\nI'd love to collaborate with you on this project. Your expertise would be a perfect fit."
+                        class="form-textarea"
+                    ></textarea>
+                    <p class="form-hint">Include project details and why you think they'd be a good fit</p>
+                </div>
+
+                <!-- Worker Info Summary -->
+                <div class="worker-summary" id="workerSummary"></div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button class="btn-cancel-invite" id="btnCancelInvite">Cancel</button>
+                <button class="btn-send-invite" id="btnSendInvite" disabled>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    Send Invitation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="hire-gig-workers.js"></script>
+</body>
+</html>

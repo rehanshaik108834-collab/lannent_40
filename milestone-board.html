@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Milestone Board</title>
+    <link rel="stylesheet" href="milestone-board.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div class="main-content">
+            <div class="content-wrapper">
+                <!-- Header Section -->
+                <div class="header-section">
+                    <div class="header-left">
+                        <h1 class="page-title">Project Milestone Board</h1>
+                        <p class="page-subtitle">Track project progress and manage milestone approvals.</p>
+                    </div>
+                    <div class="header-buttons">
+                        <button class="btn btn-secondary" id="reportsBtn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="19" x2="12" y2="9"></line>
+                                <line x1="9" y1="14" x2="15" y2="14"></line>
+                            </svg>
+                            Reports
+                        </button>
+                        <button class="btn btn-primary" id="addMilestoneBtn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add Milestone
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Summary Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-gray">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                                <circle cx="12" cy="12" r="9"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Total Milestones</p>
+                            <p class="stat-value" id="totalMilestones">8</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="12" x2="15" y2="15"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">In Progress</p>
+                            <p class="stat-value" id="inProgressCount">3</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Awaiting Review</p>
+                            <p class="stat-value" id="submittedCount">2</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Completed</p>
+                            <p class="stat-value" id="completedCount">2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kanban Board -->
+                <div class="kanban-board">
+                    <div class="kanban-column" data-status="todo">
+                        <div class="column-header">
+                            <h2 class="column-title">To Do</h2>
+                            <span class="column-count">1</span>
+                        </div>
+                        <div class="milestones-container" id="col-todo"></div>
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                            </div>
+                            <p class="empty-text">No milestones</p>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-status="in-progress">
+                        <div class="column-header">
+                            <h2 class="column-title">In Progress</h2>
+                            <span class="column-count">3</span>
+                        </div>
+                        <div class="milestones-container" id="col-in-progress"></div>
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                            </div>
+                            <p class="empty-text">No milestones</p>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-status="submitted">
+                        <div class="column-header">
+                            <h2 class="column-title">Submitted</h2>
+                            <span class="column-count">2</span>
+                        </div>
+                        <div class="milestones-container" id="col-submitted"></div>
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                            </div>
+                            <p class="empty-text">No milestones</p>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-status="disputed">
+                        <div class="column-header">
+                            <h2 class="column-title">Disputed</h2>
+                            <span class="column-count">1</span>
+                        </div>
+                        <div class="milestones-container" id="col-disputed"></div>
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                            </div>
+                            <p class="empty-text">No milestones</p>
+                        </div>
+                    </div>
+
+                    <div class="kanban-column" data-status="completed">
+                        <div class="column-header">
+                            <h2 class="column-title">Completed</h2>
+                            <span class="column-count">2</span>
+                        </div>
+                        <div class="milestones-container" id="col-completed"></div>
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                            </div>
+                            <p class="empty-text">No milestones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Milestone Modal -->
+    <div class="modal-overlay" id="addMilestoneModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Add New Milestone</h2>
+            <p class="modal-subtitle">Create a new milestone for your project.</p>
+
+            <div class="form-group">
+                <label class="form-label">Milestone Title</label>
+                <input 
+                    type="text" 
+                    class="form-input" 
+                    id="milestoneTitle" 
+                    placeholder="e.g., API Integration"
+                >
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Budget</label>
+                    <input 
+                        type="number" 
+                        class="form-input" 
+                        id="milestoneBudget" 
+                        placeholder="$500"
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Deadline</label>
+                    <input 
+                        type="date" 
+                        class="form-input" 
+                        id="milestoneDeadline"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Assign Worker</label>
+                <select class="form-input" id="milestoneWorker">
+                    <option value="">Select worker...</option>
+                    <option value="Sarah Johnson">Sarah Johnson</option>
+                    <option value="Michael Chen">Michael Chen</option>
+                    <option value="Emily Rodriguez">Emily Rodriguez</option>
+                    <option value="David Kim">David Kim</option>
+                </select>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="cancelMilestoneBtn">Cancel</button>
+                <button class="btn btn-primary" id="createMilestoneBtn">Create Milestone</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="milestone-board.js"></script>
+</body>
+</html>

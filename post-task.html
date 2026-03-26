@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post New Task - Lannent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="post-task.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="/" class="logo-link">
+                    <span class="logo-text">Lannent<span class="logo-accent">.</span></span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-items">
+                    <a href="#" class="sidebar-item" data-page="dashboard">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span class="label">Dashboard</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="projects">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 2H5a2 2 0 0 0-2 2v4m0 0v10a2 2 0 0 0 2 2h4m0 0h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4m0 0v4"></path>
+                        </svg>
+                        <span class="label">My Projects</span>
+                    </a>
+                    <a href="#" class="sidebar-item active" data-page="post-task">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                        <span class="label">Post Task</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="hire-workers">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="label">Hire Workers</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="applications">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="label">Worker Applications</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="messages">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="label">Messages</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="wallet">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <path d="M1 10h22"></path>
+                        </svg>
+                        <span class="label">Wallet</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="analytics">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span class="label">Analytics</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-page="settings">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                        </svg>
+                        <span class="label">Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="collapse-btn" id="collapseBtn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-content">
+                    <div class="search-container">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search projects, tasks, or messages...">
+                    </div>
+
+                    <div class="navbar-actions">
+                        <div class="notification-container">
+                            <button class="icon-button" id="notificationBtn">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                <span class="notification-dot"></span>
+                            </button>
+                            <div class="notification-dropdown" id="notificationDropdown">
+                                <div class="dropdown-header">
+                                    <h3>Notifications</h3>
+                                    <button class="mark-all-read">Mark all read</button>
+                                </div>
+                                <div class="notification-list">
+                                    <div class="notification-item">
+                                        <div class="notification-icon" style="background-color: #dcfce7;">
+                                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="notification-content">
+                                            <p class="notification-title">Milestone approved</p>
+                                            <p class="notification-description">Payment of $500 has been released</p>
+                                            <span class="notification-time">2m ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <button class="view-all-link">View all notifications</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="icon-button">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="notification-dot" style="background-color: #3b82f6;"></span>
+                        </button>
+
+                        <div class="user-menu-container">
+                            <button class="user-button" id="userMenuBtn">
+                                <div class="user-avatar">JD</div>
+                                <span class="user-name">John Doe</span>
+                            </button>
+                            <div class="user-dropdown" id="userDropdown">
+                                <div class="user-info">
+                                    <p class="user-fullname">John Doe</p>
+                                    <p class="user-email">john@example.com</p>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                        <span>Profile</span>
+                                    </a>
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                                        </svg>
+                                        <span>Settings</span>
+                                    </a>
+                                    <a href="#" class="user-menu-item">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 6v6l4 2"></path>
+                                        </svg>
+                                        <span>Help & Support</span>
+                                    </a>
+                                </div>
+                                <div class="user-menu-divider"></div>
+                                <a href="#" class="user-menu-item logout">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    <span>Sign Out</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper post-task-wrapper">
+                    <!-- Header -->
+                    <div class="post-task-header">
+                        <div>
+                            <h1 class="page-title">Post New Task</h1>
+                            <p class="page-subtitle">Create a project and hire skilled gig workers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Grid -->
+                    <div class="form-grid">
+                        <!-- Main Form Area -->
+                        <div class="form-main">
+                            <!-- Section 1: Basic Task Information -->
+                            <div class="form-section">
+                                <h2 class="section-title">Basic Task Information</h2>
+                                
+                                <div class="form-group">
+                                    <label for="taskTitle" class="form-label">
+                                        Task Title <span class="required">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="taskTitle"
+                                        placeholder="e.g., Build a responsive e-commerce website"
+                                        class="form-input"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category" class="form-label">
+                                        Category <span class="required">*</span>
+                                    </label>
+                                    <select id="category" class="form-select">
+                                        <option value="">Select a category</option>
+                                        <option value="Web Development">Web Development</option>
+                                        <option value="Mobile Development">Mobile Development</option>
+                                        <option value="UI/UX Design">UI/UX Design</option>
+                                        <option value="Content Writing">Content Writing</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description" class="form-label">
+                                        Project Description <span class="required">*</span>
+                                    </label>
+                                    <textarea
+                                        id="description"
+                                        placeholder="Describe your project requirements, objectives, and any specific details..."
+                                        rows="6"
+                                        class="form-textarea"
+                                    ></textarea>
+                                </div>
+
+                                <!-- Required Skills -->
+                                <div class="form-group">
+                                    <label for="skillInput" class="form-label">Required Skills</label>
+                                    <div class="skill-input-wrapper">
+                                        <input
+                                            type="text"
+                                            id="skillInput"
+                                            placeholder="Type a skill and press Enter"
+                                            class="form-input"
+                                            autocomplete="off"
+                                        />
+                                        <div class="skill-suggestions" id="skillSuggestions" style="display: none;"></div>
+                                    </div>
+                                    <div class="skills-container" id="skillsContainer"></div>
+                                </div>
+
+                                <!-- Deadline -->
+                                <div class="form-group">
+                                    <label for="deadline" class="form-label">
+                                        Deadline <span class="required">*</span>
+                                    </label>
+                                    <div class="date-input-wrapper">
+                                        <svg class="date-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        <input
+                                            type="date"
+                                            id="deadline"
+                                            class="form-input date-input"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 2: Budget & Escrow -->
+                            <div class="form-section">
+                                <h2 class="section-title">Budget & Escrow</h2>
+                                
+                                <div class="budget-row">
+                                    <div class="form-group flex-1">
+                                        <label for="budget" class="form-label">
+                                            Total Budget <span class="required">*</span>
+                                        </label>
+                                        <div class="currency-input-wrapper">
+                                            <svg class="currency-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                                <path d="M17 5H9.5a4.5 4.5 0 0 0 0 9h5a4.5 4.5 0 0 1 0 9H6"></path>
+                                            </svg>
+                                            <input
+                                                type="number"
+                                                id="budget"
+                                                placeholder="5000"
+                                                class="form-input currency-input"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="currency" class="form-label">Currency</label>
+                                        <select id="currency" class="form-select">
+                                            <option value="USD">USD</option>
+                                            <option value="EUR">EUR</option>
+                                            <option value="GBP">GBP</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Technical Audit Toggle -->
+                                <div class="audit-toggle-card">
+                                    <div class="audit-content">
+                                        <div>
+                                            <div class="audit-header">
+                                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                                <label class="audit-label">Enable Technical Audit</label>
+                                            </div>
+                                            <p class="audit-description">
+                                                If enabled, an expert reviewer will audit deliverables before approval to ensure quality.
+                                            </p>
+                                        </div>
+                                        <button class="toggle-switch" id="auditToggle" data-enabled="false">
+                                            <span class="toggle-slider"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 3: Milestones -->
+                            <div class="form-section">
+                                <div class="milestones-header">
+                                    <h2 class="section-title">Milestones</h2>
+                                    <button class="btn-add-milestone" id="addMilestoneBtn">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                        Add Milestone
+                                    </button>
+                                </div>
+
+                                <!-- Budget Distribution Check -->
+                                <div class="budget-check" id="budgetCheck" style="display: none;"></div>
+
+                                <!-- Milestone Form -->
+                                <div class="milestone-form" id="milestoneForm" style="display: none;">
+                                    <input
+                                        type="text"
+                                        id="milestoneTitle"
+                                        placeholder="Milestone title"
+                                        class="form-input"
+                                    />
+                                    <textarea
+                                        id="milestoneDescription"
+                                        placeholder="Milestone description"
+                                        rows="3"
+                                        class="form-textarea"
+                                    ></textarea>
+                                    <div class="milestone-form-actions">
+                                        <input
+                                            type="number"
+                                            id="milestoneBudget"
+                                            placeholder="Budget amount"
+                                            class="form-input flex-1"
+                                        />
+                                        <button class="btn-save-milestone" id="saveMilestoneBtn">Save</button>
+                                        <button class="btn-cancel-milestone" id="cancelMilestoneBtn">Cancel</button>
+                                    </div>
+                                </div>
+
+                                <!-- Milestones List -->
+                                <div class="milestones-list" id="milestonesList"></div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="form-actions">
+                                <button class="btn-draft">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                        <polyline points="7 3 7 8 15 8"></polyline>
+                                    </svg>
+                                    Save Draft
+                                </button>
+                                <button class="btn-publish">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                    Publish Task
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar: Project Summary -->
+                        <div class="form-sidebar">
+                            <div class="summary-card sticky">
+                                <h2 class="summary-title">Project Summary</h2>
+                                
+                                <div class="summary-item total-budget">
+                                    <div class="summary-icon">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                                            <path d="M17 5H9.5a4.5 4.5 0 0 0 0 9h5a4.5 4.5 0 0 1 0 9H6"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="summary-label">Total Budget</p>
+                                        <p class="summary-value" id="summaryBudget">USD 0</p>
+                                    </div>
+                                </div>
+
+                                <div class="summary-item milestones">
+                                    <div class="summary-icon">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="summary-label">Milestones</p>
+                                        <p class="summary-value" id="summaryMilestones">0</p>
+                                        <p class="summary-allocated" id="summaryAllocated"></p>
+                                    </div>
+                                </div>
+
+                                <div class="summary-item timeline">
+                                    <div class="summary-icon">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="summary-label">Deadline</p>
+                                        <p class="summary-value" id="summaryDeadline">Not set</p>
+                                    </div>
+                                </div>
+
+                                <div class="summary-item audit" id="summaryAudit">
+                                    <div class="summary-icon">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="summary-label">Technical Audit</p>
+                                        <p class="summary-value" id="summaryAuditStatus">Disabled</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="post-task.js"></script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+/* ===========================
+   MY PROJECTS PAGE SPECIFIC STYLES
+   =========================== */
+
+.my-projects-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+    .my-projects-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   TABS SECTION
+   =========================== */
+
+.tabs-container {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-6);
+}
+
+.tabs-wrapper {
+    display: flex;
+    gap: var(--spacing-6);
+    overflow-x: auto;
+    padding-bottom: 0;
+}
+
+.tabs-wrapper::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tabs-wrapper::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+.tab-button {
+    position: relative;
+    padding-left: var(--spacing-1);
+    padding-right: var(--spacing-1);
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: var(--transition);
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.tab-button:hover {
+    color: var(--text-primary);
+}
+
+.tab-button.active {
+    color: var(--text-primary);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--text-primary);
+}
+
+.tab-count {
+    margin-left: var(--spacing-2);
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tab-button.active .tab-count {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+}
+
+.tab-button:not(.active) .tab-count {
+    background-color: #f0f0f0;
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   PROJECTS GRID
+   =========================== */
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 1024px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1440px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===========================
+   PROJECT CARD
+   =========================== */
+
+.project-card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background-color: var(--bg-card);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.project-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-4);
+}
+
+.project-card-info {
+    flex: 1;
+}
+
+.project-card-title {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.project-worker-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-3);
+}
+
+.worker-avatar-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.worker-name {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.status-badge-small {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status-badge-small.open {
+    background-color: #f0f0f0;
+    color: #4b5563;
+}
+
+.status-badge-small.in-progress {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.status-badge-small.under-review {
+    background-color: #f3e8ff;
+    color: #9333ea;
+}
+
+.status-badge-small.completed {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.status-badge-small.disputed {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* ===========================
+   MILESTONE PROGRESS
+   =========================== */
+
+.milestone-section {
+    margin-bottom: var(--spacing-4);
+}
+
+.milestone-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.milestone-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.milestone-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+/* ===========================
+   INFO GRID
+   =========================== */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+}
+
+.info-box {
+    padding: var(--spacing-3);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.info-box-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.info-box-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.info-box-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Escrow Status Colors */
+.info-box.escrow-locked {
+    background-color: #dbeafe;
+    border-color: #bfdbfe;
+}
+
+.info-box.escrow-locked .info-box-label {
+    color: #1e40af;
+}
+
+.info-box.escrow-locked .info-box-value {
+    color: #1e40af;
+}
+
+.info-box.escrow-pending {
+    background-color: #fed7aa;
+    border-color: #fdba74;
+}
+
+.info-box.escrow-pending .info-box-label {
+    color: #9a3412;
+}
+
+.info-box.escrow-pending .info-box-value {
+    color: #9a3412;
+}
+
+.info-box.escrow-released {
+    background-color: #dcfce7;
+    border-color: #bbf7d0;
+}
+
+.info-box.escrow-released .info-box-label {
+    color: #15803d;
+}
+
+.info-box.escrow-released .info-box-value {
+    color: #15803d;
+}
+
+.info-box.deadline {
+    background-color: #f3f3f3;
+}
+
+.info-box.deadline .info-box-label {
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   ACTION BUTTONS
+   =========================== */
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.action-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.02);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.action-button:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.action-button .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Disputed Task Buttons */
+.action-button.dispute {
+    border-color: #fee2e2;
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.action-button.dispute:hover {
+    background-color: #fecaca;
+}
+
+/* ===========================
+   EMPTY STATE
+   =========================== */
+
+.empty-state {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background-color: var(--bg-card);
+    padding: var(--spacing-12);
+    text-align: center;
+    margin-top: var(--spacing-6);
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-4);
+}
+
+.empty-state-icon .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-secondary);
+}
+
+.empty-state-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.empty-state-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-6);
+}
+
+.empty-state .primary-button {
+    display: inline-flex;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+@media (max-width: 768px) {
+    .my-projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .primary-button {
+        align-self: flex-start;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs-wrapper {
+        gap: var(--spacing-4);
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .project-card {
+        padding: var(--spacing-4);
+    }
+}
+
+@media (max-width: 640px) {
+    .tabs-wrapper {
+        gap: var(--spacing-3);
+    }
+
+    .tab-button {
+        font-size: 12px;
+        padding: var(--spacing-2);
+    }
+
+    .tab-count {
+        display: none;
+    }
+
+    .project-card-title {
+        font-size: 14px;
+    }
+}
+
+/* Spacing utility for empty state */
+.spacing-12 {
+    padding: 3rem;
+}

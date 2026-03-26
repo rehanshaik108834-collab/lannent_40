@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details - E-commerce Platform Redesign</title>
+    <link rel="stylesheet" href="task-details.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Header Navigation -->
+        <header class="dashboard-header">
+            <nav class="navbar">
+                <div class="navbar-brand">Dashboard</div>
+            </nav>
+        </header>
+
+        <main class="dashboard-content">
+            <div class="task-container">
+                <!-- Back Button & Submit Proposal -->
+                <div class="task-header-actions">
+                    <button class="btn-back" onclick="navigateBack()">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Browse Tasks
+                    </button>
+                    <button class="btn-submit-proposal" onclick="openProposalModal()">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                        </svg>
+                        Submit Proposal
+                    </button>
+                </div>
+
+                <div class="task-grid">
+                    <!-- Left Column - Project Details -->
+                    <div class="task-details-column">
+                        <!-- Task Header -->
+                        <div class="card">
+                            <div class="card-header-flex">
+                                <h1 class="task-title">E-commerce Platform Redesign</h1>
+                                <span class="badge badge-escrow">
+                                    <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4.5 8-10c0-5.5-3.6-10-8-10S4 6.5 4 12c0 5.5 8 10 8 10z"/>
+                                    </svg>
+                                    Escrow Protected
+                                </span>
+                            </div>
+
+                            <div class="task-meta-grid">
+                                <div class="meta-item">
+                                    <div class="meta-label">
+                                        <svg class="icon-md text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2v20M2 12h20"/>
+                                        </svg>
+                                        <span>Budget</span>
+                                    </div>
+                                    <p class="meta-value">USD 5,000</p>
+                                    <span class="badge badge-sm badge-emerald">
+                                        <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 22s8-4.5 8-10c0-5.5-3.6-10-8-10S4 6.5 4 12c0 5.5 8 10 8 10z"/>
+                                        </svg>
+                                        Escrow Protected
+                                    </span>
+                                </div>
+
+                                <div class="meta-item">
+                                    <div class="meta-label">
+                                        <svg class="icon-md text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2"/>
+                                            <path d="M16 2v4M8 2v4M3 10h18"/>
+                                        </svg>
+                                        <span>Deadline</span>
+                                    </div>
+                                    <p class="meta-value">Mar 25, 2026</p>
+                                </div>
+
+                                <div class="meta-item">
+                                    <div class="meta-label">
+                                        <svg class="icon-md text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                            <polyline points="17 6 23 6 23 12"/>
+                                        </svg>
+                                        <span>Category</span>
+                                    </div>
+                                    <p class="meta-value">Web Development</p>
+                                </div>
+
+                                <div class="meta-item">
+                                    <div class="meta-label">
+                                        <svg class="icon-md text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        <span>Proposals</span>
+                                    </div>
+                                    <p class="meta-value">12</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                <span>Posted by</span>
+                                <span class="font-medium">TechCorp Inc.</span>
+                            </div>
+                        </div>
+
+                        <!-- Technical Audit Badge -->
+                        <div class="card card-alert">
+                            <div class="alert-content">
+                                <div class="alert-icon">
+                                    <svg class="icon-md text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="alert-title">Expert Technical Audit Required</h3>
+                                    <p class="alert-description">
+                                        This project requires a comprehensive technical audit by our platform experts before final approval and payment release.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Description -->
+                        <div class="card">
+                            <h2 class="card-title">Project Description</h2>
+
+                            <div class="description-section">
+                                <h3 class="section-heading">
+                                    <svg class="icon-sm text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                    Project Overview
+                                </h3>
+                                <p class="section-text">
+                                    We're looking for an experienced full-stack developer to completely redesign our e-commerce platform. The current system needs a modern UI/UX overhaul while maintaining all existing functionality and improving performance.
+                                </p>
+                            </div>
+
+                            <div class="description-section">
+                                <h3 class="section-heading">
+                                    <svg class="icon-sm text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                    Requirements
+                                </h3>
+                                <ul class="requirements-list">
+                                    <li>5+ years of experience with React and TypeScript</li>
+                                    <li>Strong portfolio showcasing e-commerce projects</li>
+                                    <li>Experience with modern state management (Redux, Zustand, etc.)</li>
+                                    <li>Expertise in responsive design and mobile-first approach</li>
+                                    <li>Understanding of payment gateway integrations</li>
+                                    <li>Ability to work with RESTful APIs</li>
+                                </ul>
+                            </div>
+
+                            <div class="description-section">
+                                <h3 class="section-heading">
+                                    <svg class="icon-sm text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                    Expected Deliverables
+                                </h3>
+                                <ul class="requirements-list">
+                                    <li>Complete UI/UX redesign in Figma</li>
+                                    <li>Fully responsive React application</li>
+                                    <li>Component library documentation</li>
+                                    <li>Performance optimization report</li>
+                                    <li>Deployment to production environment</li>
+                                </ul>
+                            </div>
+
+                            <div class="description-section">
+                                <h3 class="section-heading">
+                                    <svg class="icon-sm text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6v6l4 2"/>
+                                    </svg>
+                                    Timeline
+                                </h3>
+                                <p class="section-text">
+                                    The project is expected to be completed within 8 weeks from the start date. We have weekly milestone reviews and require daily progress updates via our project management tool.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Required Skills -->
+                        <div class="card">
+                            <h2 class="card-title">Required Skills</h2>
+                            <div class="skills-container">
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">TypeScript</span>
+                                <span class="skill-badge">UI Design</span>
+                                <span class="skill-badge">Figma</span>
+                                <span class="skill-badge">Tailwind CSS</span>
+                            </div>
+                        </div>
+
+                        <!-- Milestones -->
+                        <div class="card">
+                            <h2 class="card-title">Project Milestones</h2>
+                            <div class="milestones-container">
+                                <div class="milestone-item">
+                                    <div class="milestone-header">
+                                        <div class="milestone-number">1</div>
+                                        <div class="milestone-content">
+                                            <h3 class="milestone-title">UI/UX Design & Wireframes</h3>
+                                            <p class="milestone-description">Create complete design system and wireframes in Figma</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-budget">
+                                        <p class="milestone-amount">$1,200</p>
+                                        <p class="milestone-label">Budget</p>
+                                    </div>
+                                </div>
+
+                                <div class="milestone-item">
+                                    <div class="milestone-header">
+                                        <div class="milestone-number">2</div>
+                                        <div class="milestone-content">
+                                            <h3 class="milestone-title">Frontend Development</h3>
+                                            <p class="milestone-description">Build React components and integrate with existing APIs</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-budget">
+                                        <p class="milestone-amount">$2,000</p>
+                                        <p class="milestone-label">Budget</p>
+                                    </div>
+                                </div>
+
+                                <div class="milestone-item">
+                                    <div class="milestone-header">
+                                        <div class="milestone-number">3</div>
+                                        <div class="milestone-content">
+                                            <h3 class="milestone-title">Testing & Quality Assurance</h3>
+                                            <p class="milestone-description">Comprehensive testing across devices and browsers</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-budget">
+                                        <p class="milestone-amount">$800</p>
+                                        <p class="milestone-label">Budget</p>
+                                    </div>
+                                </div>
+
+                                <div class="milestone-item">
+                                    <div class="milestone-header">
+                                        <div class="milestone-number">4</div>
+                                        <div class="milestone-content">
+                                            <h3 class="milestone-title">Deployment & Documentation</h3>
+                                            <p class="milestone-description">Deploy to production and create technical documentation</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-budget">
+                                        <p class="milestone-amount">$1,000</p>
+                                        <p class="milestone-label">Budget</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Client Info -->
+                    <div class="client-info-column">
+                        <!-- Proposal Deadline Warning -->
+                        <div class="card card-warning">
+                            <svg class="icon-sm text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            <div>
+                                <p class="warning-title">Applications close in 3 days</p>
+                                <p class="warning-text">Submit your proposal soon to be considered</p>
+                            </div>
+                        </div>
+
+                        <!-- Client Info Card -->
+                        <div class="card">
+                            <div class="client-header">
+                                <h2 class="card-title">About Client</h2>
+                                <svg class="icon-sm text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+
+                            <div class="client-details">
+                                <div class="client-detail-item">
+                                    <p class="detail-label">Company</p>
+                                    <p class="detail-value">TechCorp Inc.</p>
+                                </div>
+
+                                <div class="client-detail-item detail-row">
+                                    <div class="detail-label-row">
+                                        <svg class="icon-md text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                        <span>Rating</span>
+                                    </div>
+                                    <span class="detail-value">4.8 / 5.0</span>
+                                </div>
+
+                                <div class="client-detail-item detail-row">
+                                    <div class="detail-label-row">
+                                        <svg class="icon-md text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                        </svg>
+                                        <span>Projects Posted</span>
+                                    </div>
+                                    <span class="detail-value">24</span>
+                                </div>
+
+                                <div class="client-detail-item detail-row">
+                                    <div class="detail-label-row">
+                                        <svg class="icon-md text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                        <span>Hiring Rate</span>
+                                    </div>
+                                    <span class="detail-value text-green-600">85%</span>
+                                </div>
+
+                                <div class="client-detail-item detail-row">
+                                    <div class="detail-label-row">
+                                        <svg class="icon-md text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2"/>
+                                            <path d="M16 2v4M8 2v4M3 10h18"/>
+                                        </svg>
+                                        <span>Member Since</span>
+                                    </div>
+                                    <span class="detail-value">Jan 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Proposal Modal -->
+    <div id="proposalModal" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeProposalModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Submit Proposal</h2>
+                <button class="btn-close" onclick="closeProposalModal()">
+                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="proposalForm" class="modal-form" onsubmit="handleSubmitProposal(event)">
+                <!-- Proposal Deadline Warning -->
+                <div class="form-alert">
+                    <svg class="icon-sm text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <div>
+                        <p class="warning-title">Applications close in 3 days</p>
+                        <p class="warning-text">Make sure your proposal stands out!</p>
+                    </div>
+                </div>
+
+                <!-- Cover Letter -->
+                <div class="form-group">
+                    <label for="coverLetter" class="form-label">Cover Letter *</label>
+                    <textarea
+                        id="coverLetter"
+                        name="coverLetter"
+                        placeholder="Explain why you're the best fit for this project..."
+                        rows="6"
+                        required
+                        class="form-textarea"
+                    ></textarea>
+                </div>
+
+                <!-- Bid Amount -->
+                <div class="form-group">
+                    <label for="bidAmount" class="form-label">Your Bid Amount *</label>
+                    <div class="form-input-wrapper">
+                        <svg class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        <input
+                            type="number"
+                            id="bidAmount"
+                            name="bidAmount"
+                            placeholder="5000"
+                            required
+                            min="0"
+                            step="0.01"
+                            class="form-input"
+                        />
+                    </div>
+                    <p class="form-hint">Client budget: $5,000</p>
+                </div>
+
+                <!-- Estimated Timeline -->
+                <div class="form-group">
+                    <label for="estimatedTimeline" class="form-label">Estimated Timeline *</label>
+                    <input
+                        type="text"
+                        id="estimatedTimeline"
+                        name="estimatedTimeline"
+                        placeholder="e.g., 6 weeks"
+                        required
+                        class="form-input"
+                    />
+                </div>
+
+                <!-- Portfolio Link -->
+                <div class="form-group">
+                    <label for="portfolioLink" class="form-label">Portfolio Link (Optional)</label>
+                    <div class="form-input-wrapper">
+                        <svg class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                        </svg>
+                        <input
+                            type="url"
+                            id="portfolioLink"
+                            name="portfolioLink"
+                            placeholder="https://your-portfolio.com"
+                            class="form-input"
+                        />
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeProposalModal()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Submit Proposal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="task-details.js"></script>
+</body>
+</html>
