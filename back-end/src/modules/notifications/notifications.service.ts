@@ -28,6 +28,17 @@ export class NotificationsService {
     return notif;
   }
 
+  markAllRead(userId: string) {
+    let count = 0;
+    this.notifications.forEach(n => {
+      if (n.userId === userId && !n.read) {
+        n.read = true;
+        count++;
+      }
+    });
+    return { markedRead: count };
+  }
+
   resetToSeed() {
     this.notifications = JSON.parse(JSON.stringify(SEED_NOTIFICATIONS));
   }

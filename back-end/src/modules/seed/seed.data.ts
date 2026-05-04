@@ -78,8 +78,4 @@ export const SEED_EXPERT_APPLICATIONS = [
   { id: 'ea1', name: 'Dr. Jane Smith', email: 'expert@gmail.com', phone: '9876543210', phoneCountry: '+1', country: 'United States', expertise: 'Full-Stack Development', experience: '10+', linkedin: 'https://linkedin.com/in/janesmith', github: 'https://github.com/janesmith', motivation: 'Passionate about code quality and helping teams deliver secure, scalable solutions.', status: 'approved', appliedAt: '2026-01-15', reviewedAt: '2026-01-18', reviewedBy: 'u4' },
 ];
 
-export const SEED_NOTIFICATIONS = [
-  { id: 'n1', userId: 'u1', type: 'milestone-approved', text: 'Milestone "Frontend UI" approved', subtext: 'E-commerce Redesign · 2 min ago', read: false, createdAt: '2026-03-30' },
-  { id: 'n2', userId: 'u1', type: 'message', text: 'New message from Sarah Johnson', subtext: 'Mobile App Project · 10 min ago', read: false, createdAt: '2026-03-30' },
-  { id: 'n3', userId: 'u2', type: 'payment', text: 'Payment of $1,000 received', subtext: 'Frontend Development milestone · 1 hr ago', read: false, createdAt: '2026-03-30' },
-];
+export const SEED_NOTIFICATIONS = [];

@@ -554,6 +554,14 @@ const Store = (() => {
     _cache.notifications.push({ id: 'n_' + Date.now(), read: false, createdAt: new Date().toISOString().slice(0, 10), ...data });
   }
 
+  function markNotificationsRead(userId) {
+    _syncPatch(`${API}/notifications/${userId}/read-all`, {});
+    // Update local cache
+    (_cache.notifications || []).forEach(n => {
+      if (n.userId === userId) n.read = true;
+    });
+  }
+
   // ─── PUBLIC API ───────────────────────────────────────────────────────────
   return {
     init, resetToSeed,
@@ -565,7 +573,7 @@ const Store = (() => {
     getAuditReports, getAuditReportByRequest, getReportsByTask, saveAuditReport,
     getDisputes, getDisputeById, createDispute, resolveDispute,
     getTransactions, getTransactionsByUser, createTransaction,
-    getNotifications, addNotification,
+    getNotifications, addNotification, markNotificationsRead,
     getExpertApplications, getExpertApplicationById, getExpertApplicationByEmail, saveExpertApplication, updateExpertApplicationStatus,
   };
 })();

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Body, Query, Param, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiHeader, ApiQuery } from '@nestjs/swagger';
 import { NotificationsService } from './notifications.service';
 import { CreateNotificationDto } from './dto/create-notification.dto';
@@ -22,5 +22,11 @@ export class NotificationsController {
   @ApiOperation({ summary: 'Create a notification' })
   create(@Body() dto: CreateNotificationDto) {
     return this.notificationsService.create(dto);
+  }
+
+  @Patch(':userId/read-all')
+  @ApiOperation({ summary: 'Mark all notifications as read for a user' })
+  markAllRead(@Param('userId') userId: string) {
+    return this.notificationsService.markAllRead(userId);
   }
 }
