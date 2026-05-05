@@ -9,7 +9,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Milestones')
 @Controller('milestones')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class MilestonesController {
   constructor(private readonly milestonesService: MilestonesService) {}
 
@@ -27,6 +26,7 @@ export class MilestonesController {
   }
 
   @Post()
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Create a new milestone' })
   create(@Body() dto: CreateMilestoneDto) {
@@ -34,6 +34,7 @@ export class MilestonesController {
   }
 
   @Patch(':id')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'worker', 'superuser')
   @ApiOperation({ summary: 'Update a milestone' })
   update(@Param('id') id: string, @Body() dto: UpdateMilestoneDto) {
@@ -41,6 +42,7 @@ export class MilestonesController {
   }
 
   @Post(':id/submit')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('worker')
   @ApiOperation({ summary: 'Submit deliverable for a milestone' })
   submit(@Param('id') id: string, @Body() dto: SubmitDeliverableDto) {
@@ -48,6 +50,7 @@ export class MilestonesController {
   }
 
   @Post(':id/approve')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client')
   @ApiOperation({ summary: 'Approve deliverable and release escrow payment' })
   approve(@Param('id') id: string) {

@@ -1,13 +1,45 @@
+// ============================================================================
+// EER Specialization: USERS split into base + role sub-tables
+// Base USERS: 10 shared columns (id, name, email, password, role, avatar, avatarColor, status, joinDate, walletBalance)
+// CLIENTS:  userId, company, location
+// WORKERS:  userId, location, skills, rating, completedProjects
+// EXPERTS:  userId, specialization, reviewsDone
+// ============================================================================
+
+// ── Base USERS (shared attributes for ALL roles) ──────────────────────────────
 export const SEED_USERS = [
-  { id: 'u1', name: 'James Client', email: 'client@gmail.com', password: 'Password@123', role: 'client', avatar: 'JC', avatarColor: 'linear-gradient(135deg,#6366f1,#4f46e5)', status: 'active', joinDate: 'Jan 10, 2026', walletBalance: 24500, company: 'TechCorp Ltd', location: 'New York, NY', skills: [], rating: 0, completedProjects: 0, specialization: '', reviewsDone: 0 },
-  { id: 'u2', name: 'Alex Worker', email: 'worker@gmail.com', password: 'Password@123', role: 'worker', avatar: 'AW', avatarColor: 'linear-gradient(135deg,#10b981,#059669)', status: 'active', joinDate: 'Feb 1, 2026', walletBalance: 8200, company: '', location: '', skills: ['React', 'Node.js', 'MongoDB'], rating: 4.8, completedProjects: 23, specialization: '', reviewsDone: 0 },
-  { id: 'u3', name: 'Dr. Jane Smith', email: 'expert@gmail.com', password: 'Password@123', role: 'expert', avatar: 'JS', avatarColor: 'linear-gradient(135deg,#a855f7,#7c3aed)', status: 'active', joinDate: 'Jan 20, 2026', walletBalance: 5100, company: '', location: '', skills: [], rating: 0, completedProjects: 0, specialization: 'Full-Stack & Security', reviewsDone: 47 },
-  { id: 'u4', name: 'Super Admin', email: 'super@gmail.com', password: 'Superadmin@123', role: 'superuser', avatar: 'SA', avatarColor: 'linear-gradient(135deg,#ef4444,#dc2626)', status: 'active', joinDate: 'Jan 1, 2026', walletBalance: 0, company: '', location: '', skills: [], rating: 0, completedProjects: 0, specialization: '', reviewsDone: 0 },
-  { id: 'u5', name: 'Sarah Johnson', email: 'sarah@gmail.com', password: 'Password@123', role: 'worker', avatar: 'SJ', avatarColor: 'linear-gradient(135deg,#6366f1,#4f46e5)', status: 'active', joinDate: 'Feb 5, 2026', walletBalance: 12400, company: '', location: '', skills: ['React', 'Figma', 'UI/UX Design'], rating: 4.9, completedProjects: 89, specialization: '', reviewsDone: 0 },
-  { id: 'u6', name: 'Michael Chen', email: 'michael@gmail.com', password: 'Password@123', role: 'worker', avatar: 'MC', avatarColor: 'linear-gradient(135deg,#ec4899,#be185d)', status: 'active', joinDate: 'Feb 10, 2026', walletBalance: 9800, company: '', location: '', skills: ['React', 'Node.js', 'MongoDB'], rating: 4.7, completedProjects: 65, specialization: '', reviewsDone: 0 },
-  { id: 'u7', name: 'Emily Rodriguez', email: 'emily@gmail.com', password: 'Password@123', role: 'worker', avatar: 'ER', avatarColor: 'linear-gradient(135deg,#10b981,#059669)', status: 'active', joinDate: 'Feb 15, 2026', walletBalance: 7300, company: '', location: '', skills: ['Figma', 'CSS3', 'User Research'], rating: 4.8, completedProjects: 41, specialization: '', reviewsDone: 0 },
-  { id: 'u8', name: 'Bob Client', email: 'bob@gmail.com', password: 'Password@123', role: 'client', avatar: 'BC', avatarColor: 'linear-gradient(135deg,#f59e0b,#d97706)', status: 'active', joinDate: 'Mar 1, 2026', walletBalance: 15000, company: 'StartupXYZ', location: 'Austin, TX', skills: [], rating: 0, completedProjects: 0, specialization: '', reviewsDone: 0 },
+  { id: 'u1', name: 'James Client', email: 'client@gmail.com', password: 'Password@123', role: 'client', avatar: 'JC', avatarColor: 'linear-gradient(135deg,#6366f1,#4f46e5)', status: 'active', joinDate: 'Jan 10, 2026', walletBalance: 24500 },
+  { id: 'u2', name: 'Alex Worker', email: 'worker@gmail.com', password: 'Password@123', role: 'worker', avatar: 'AW', avatarColor: 'linear-gradient(135deg,#10b981,#059669)', status: 'active', joinDate: 'Feb 1, 2026', walletBalance: 8200 },
+  { id: 'u3', name: 'Dr. Jane Smith', email: 'expert@gmail.com', password: 'Password@123', role: 'expert', avatar: 'JS', avatarColor: 'linear-gradient(135deg,#a855f7,#7c3aed)', status: 'active', joinDate: 'Jan 20, 2026', walletBalance: 5100 },
+  { id: 'u4', name: 'Super Admin', email: 'super@gmail.com', password: 'Superadmin@123', role: 'superuser', avatar: 'SA', avatarColor: 'linear-gradient(135deg,#ef4444,#dc2626)', status: 'active', joinDate: 'Jan 1, 2026', walletBalance: 0 },
+  { id: 'u5', name: 'Sarah Johnson', email: 'sarah@gmail.com', password: 'Password@123', role: 'worker', avatar: 'SJ', avatarColor: 'linear-gradient(135deg,#6366f1,#4f46e5)', status: 'active', joinDate: 'Feb 5, 2026', walletBalance: 12400 },
+  { id: 'u6', name: 'Michael Chen', email: 'michael@gmail.com', password: 'Password@123', role: 'worker', avatar: 'MC', avatarColor: 'linear-gradient(135deg,#ec4899,#be185d)', status: 'active', joinDate: 'Feb 10, 2026', walletBalance: 9800 },
+  { id: 'u7', name: 'Emily Rodriguez', email: 'emily@gmail.com', password: 'Password@123', role: 'worker', avatar: 'ER', avatarColor: 'linear-gradient(135deg,#10b981,#059669)', status: 'active', joinDate: 'Feb 15, 2026', walletBalance: 7300 },
+  { id: 'u8', name: 'Bob Client', email: 'bob@gmail.com', password: 'Password@123', role: 'client', avatar: 'BC', avatarColor: 'linear-gradient(135deg,#f59e0b,#d97706)', status: 'active', joinDate: 'Mar 1, 2026', walletBalance: 15000 },
 ];
+
+// ── CLIENTS (1:1 with USERS where role='client') ──────────────────────────────
+export const SEED_CLIENTS = [
+  { userId: 'u1', company: 'TechCorp Ltd', location: 'New York, NY' },
+  { userId: 'u8', company: 'StartupXYZ', location: 'Austin, TX' },
+];
+
+// ── WORKERS (1:1 with USERS where role='worker') ──────────────────────────────
+export const SEED_WORKERS = [
+  { userId: 'u2', location: '', skills: ['React', 'Node.js', 'MongoDB'], rating: 4.8, completedProjects: 23 },
+  { userId: 'u5', location: '', skills: ['React', 'Figma', 'UI/UX Design'], rating: 4.9, completedProjects: 89 },
+  { userId: 'u6', location: '', skills: ['React', 'Node.js', 'MongoDB'], rating: 4.7, completedProjects: 65 },
+  { userId: 'u7', location: '', skills: ['Figma', 'CSS3', 'User Research'], rating: 4.8, completedProjects: 41 },
+];
+
+// ── EXPERTS (1:1 with USERS where role='expert') ──────────────────────────────
+export const SEED_EXPERTS = [
+  { userId: 'u3', specialization: 'Full-Stack & Security', reviewsDone: 47 },
+];
+
+// ============================================================================
+// All remaining seed arrays are UNCHANGED — they reference USERS(id) directly
+// ============================================================================
 
 export const SEED_TASKS = [
   { id: 't1', title: 'E-commerce Website Redesign', description: 'Need a complete redesign of our e-commerce platform with modern UI/UX. Must include product pages, cart, checkout flow, and admin panel.', category: 'Web Development', budget: 2500, currency: 'USD', deadline: '2026-04-15', skills: ['React', 'Figma', 'UI/UX Design'], clientId: 'u1', workerId: 'u5', status: 'in-progress', auditEnabled: false, progress: 75, createdAt: '2026-03-01' },

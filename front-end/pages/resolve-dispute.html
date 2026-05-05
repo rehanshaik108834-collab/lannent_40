@@ -639,6 +639,29 @@
           const session = typeof Auth !== 'undefined' ? Auth.getCurrentUser() : null;
           if (disputeId && typeof Store !== 'undefined') {
             Store.resolveDispute(disputeId, { verdict: storeVerdict, resolution: note, expertId: session?.userId || 'u3' });
+
+            // Notify the client (dispute raiser) about the resolution
+            const dispute = Store.getDisputeById(disputeId);
+            const verdictLabel = storeVerdict === 'worker-favour' ? 'in favour of the Worker' : storeVerdict === 'client-favour' ? 'in favour of the Client' : 'with a partial resolution';
+
+            if (raw.raisedBy) {
+              Store.addNotification({
+                userId: raw.raisedBy,
+                type: 'dispute-resolved',
+                text: `Dispute resolved: ${d.project}`,
+                subtext: `Expert verdict ${verdictLabel} — ${d.milestone}`,
+              });
+            }
+
+            // Notify the respondent (worker/client being disputed)
+            if (raw.againstId) {
+              Store.addNotification({
+                userId: raw.againstId,
+                type: 'dispute-resolved',
+                text: `Dispute resolved: ${d.project}`,
+                subtext: `Expert verdict ${verdictLabel} — ${d.milestone}`,
+              });
+            }
           }
         } catch(e) { console.warn('Store save failed', e); }
 

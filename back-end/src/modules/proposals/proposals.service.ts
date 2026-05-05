@@ -39,6 +39,18 @@ export class ProposalsService {
   }
 
   create(dto: CreateProposalDto) {
+    // Guard: only open tasks accept proposals/invitations
+    if (dto.taskId) {
+      try {
+        const task = this.tasksService.findById(dto.taskId);
+        if (task.status !== 'open') {
+          throw new BadRequestException('This project is not open — cannot submit proposals or invitations.');
+        }
+      } catch (e) {
+        if (e instanceof BadRequestException) throw e;
+      }
+    }
+
     const prop = {
       id: this.generateId(),
       status: 'pending',
@@ -60,6 +72,16 @@ export class ProposalsService {
 
   hireWorker(proposalId: string) {
     const prop = this.findById(proposalId);
+
+    // Guard: only open tasks allow hiring
+    try {
+      const task = this.tasksService.findById(prop.taskId);
+      if (task.status !== 'open') {
+        throw new BadRequestException('This project is not open — cannot hire workers.');
+      }
+    } catch (e) {
+      if (e instanceof BadRequestException) throw e;
+    }
 
     // Mark all other proposals for same task as rejected, this one as hired
     this.proposals = this.proposals.map(p =>
@@ -92,6 +114,16 @@ export class ProposalsService {
   acceptInvitation(proposalId: string) {
     const prop = this.findById(proposalId);
     if (prop.type !== 'invitation') throw new BadRequestException('This is not an invitation.');
+
+    // Guard: only open tasks allow accepting invitations
+    try {
+      const task = this.tasksService.findById(prop.taskId);
+      if (task.status !== 'open') {
+        throw new BadRequestException('This project is no longer open — cannot accept invitation.');
+      }
+    } catch (e) {
+      if (e instanceof BadRequestException) throw e;
+    }
 
     this.proposals = this.proposals.map(p =>
       p.taskId === prop.taskId

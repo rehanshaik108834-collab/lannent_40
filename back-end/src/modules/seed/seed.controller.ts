@@ -7,11 +7,11 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Seed')
 @Controller('seed')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class SeedController {
   constructor(private readonly seedService: SeedService) {}
 
   @Post('reset')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('superuser')
   @ApiOperation({ summary: 'Reset all data to seed state (superuser only)' })
   reset() {

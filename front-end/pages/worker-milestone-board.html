@@ -84,10 +84,8 @@
             <span class="card-amount">${m.amount}</span>
           </div>
           ${isDone ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.05);text-align:center;"><span style="font-size:12px;color:#10b981;font-weight:600;">✓ Completed</span></div>` : ''}
-          ${isReview ? `<div style="margin-top:10px;">
-            <button onclick="event.stopPropagation();submitToClient('${m.rawId}','${m.taskId}')" style="width:100%;padding:7px;border-radius:8px;background:linear-gradient(135deg,#10b981,#059669);color:white;border:none;font-size:12px;font-weight:600;cursor:pointer;">
-              Submit to Client
-            </button>
+          ${isReview ? `<div style="margin-top:10px;padding:8px;border-radius:8px;background:#fef9c3;border:1px solid #fde68a;text-align:center;">
+            <span style="font-size:12px;font-weight:600;color:#92400e;">⏳ Awaiting Client Review</span>
           </div>` : col === 'inprogress' ? `<div style="margin-top:10px;">
             <button onclick="event.stopPropagation();submitDeliverable('${m.rawId}','${m.taskId}')" style="width:100%;padding:7px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#d97706);color:white;border:none;font-size:12px;font-weight:600;cursor:pointer;">
               <i data-lucide="send" style="width:12px;height:12px;display:inline;vertical-align:middle;margin-right:4px;"></i>Submit Deliverable

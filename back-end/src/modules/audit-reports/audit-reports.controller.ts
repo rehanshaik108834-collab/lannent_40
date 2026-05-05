@@ -8,7 +8,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Audit Reports')
 @Controller('audit-reports')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class AuditReportsController {
   constructor(private readonly auditReportsService: AuditReportsService) {}
 

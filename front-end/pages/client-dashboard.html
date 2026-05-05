@@ -175,44 +175,6 @@
           </div>
         </div>
 
-        <!-- Recent Activity -->
-        <div style="margin-top:20px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;">
-          <h3 style="font-size:15px;font-weight:600;margin-bottom:16px;">Recent Activity</h3>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            ${notifs.slice(0, 4).map(n => {
-              let icon = 'bell';
-              let color = '#6366f1';
-              let bg = '#eef2ff';
-              
-              if (n.type.includes('payment') || n.type.includes('escrow') || n.type.includes('release')) {
-                 icon = 'dollar-sign'; color = '#10b981'; bg = '#ecfdf5';
-              } else if (n.type.includes('application') || n.type.includes('proposal') || n.type.includes('worker')) {
-                 icon = 'user-plus'; color = '#a855f7'; bg = '#faf5ff';
-              } else if (n.type.includes('message')) {
-                 icon = 'message-square'; color = '#3b82f6'; bg = '#eff6ff';
-              } else if (n.type.includes('submit')) {
-                 icon = 'send'; color = '#f59e0b'; bg = '#fffbeb';
-              } else if (n.type.includes('audit')) {
-                 icon = 'check-circle'; color = '#10b981'; bg = '#ecfdf5';
-              } else if (n.type.includes('dispute')) {
-                 icon = 'alert-triangle'; color = '#ef4444'; bg = '#fef2f2';
-              }
-              
-              return `
-              <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;transition:background 0.15s;"
-                   onmouseenter="this.style.background='#f8f9fb'" onmouseleave="this.style.background='transparent'">
-                <div style="width:36px;height:36px;border-radius:10px;background:${bg};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <i data-lucide="${icon}" style="width:16px;height:16px;color:${color};"></i>
-                </div>
-                <div style="flex:1;">
-                  <p style="font-size:14px;font-weight:500;">${n.text}</p>
-                  <p style="font-size:12px;color:var(--muted-foreground);">${n.subtext}</p>
-                </div>
-                <span style="font-size:12px;color:var(--muted-foreground);white-space:nowrap;">Just now</span>
-              </div>`;
-            }).join('') || '<div style="padding:16px;text-align:center;color:var(--muted-foreground);font-size:14px;">No recent activity</div>'}
-          </div>
-        </div>
       `;
 
       initDashboard({

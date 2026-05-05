@@ -8,7 +8,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Transactions')
 @Controller('transactions')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
@@ -20,6 +19,7 @@ export class TransactionsController {
   }
 
   @Post()
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Create a transaction' })
   create(@Body() dto: CreateTransactionDto) {

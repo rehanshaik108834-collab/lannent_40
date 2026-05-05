@@ -118,9 +118,9 @@
                 <button onclick="openEditModal('${p.id}')" title="Edit" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--muted-foreground);border-radius:6px;" onmouseenter="this.style.background='var(--secondary)'" onmouseleave="this.style.background='none'">
                   <i data-lucide="pencil" style="width:14px;height:14px;"></i>
                 </button>
-                <button onclick="deleteTask('${p.id}')" title="Delete" style="background:none;border:none;cursor:pointer;padding:4px;color:#ef4444;border-radius:6px;" onmouseenter="this.style.background='#fee2e2'" onmouseleave="this.style.background='none'">
+                ${p.status === 'open' && p.worker === 'Not Assigned' ? `<button onclick="deleteTask('${p.id}')" title="Delete" style="background:none;border:none;cursor:pointer;padding:4px;color:#ef4444;border-radius:6px;" onmouseenter="this.style.background='#fee2e2'" onmouseleave="this.style.background='none'">
                   <i data-lucide="trash-2" style="width:14px;height:14px;"></i>
-                </button>
+                </button>` : ''}
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
@@ -316,10 +316,26 @@
       window.deleteTask = function(id) {
         const task = Store.getTaskById(id);
         if (!task) return;
-        Validate.confirm(`Delete "${task.title}"? This cannot be undone.`, () => {
+        if (task.status !== 'open' || task.workerId) {
+          Validate.toast('Only open tasks with no assigned worker can be deleted.', 'error');
+          return;
+        }
+        Validate.confirm(`Delete "${task.title}"? Any escrow funds will be refunded to your wallet.`, () => {
+          // Refund escrow to client
+          if (task.budget && task.budget > 0 && task.clientId) {
+            Store.addToWallet(task.clientId, task.budget);
+            Store.createTransaction({
+              type: 'escrow-refund',
+              amount: task.budget,
+              fromId: 'escrow',
+              toId: task.clientId,
+              taskId: task.id,
+              description: `Escrow refund — task "${task.title}" deleted`,
+            });
+          }
           Store.deleteTask(id);
           refreshView();
-          Validate.toast('Project deleted.', 'success');
+          Validate.toast('Project deleted. Escrow funds refunded.', 'success');
         });
       };
 

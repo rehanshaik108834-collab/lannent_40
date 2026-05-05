@@ -9,7 +9,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Audit Requests')
 @Controller('audit-requests')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class AuditRequestsController {
   constructor(private readonly auditRequestsService: AuditRequestsService) {}
 
@@ -28,6 +27,7 @@ export class AuditRequestsController {
   }
 
   @Post()
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Create an audit request' })
   create(@Body() dto: CreateAuditRequestDto) {

@@ -8,7 +8,6 @@ import { RoleGuard } from '../../common/guards/role.guard';
 @ApiTags('Proposals')
 @Controller('proposals')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class ProposalsController {
   constructor(private readonly proposalsService: ProposalsService) {}
 

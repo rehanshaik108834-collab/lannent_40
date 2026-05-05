@@ -9,7 +9,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Disputes')
 @Controller('disputes')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class DisputesController {
   constructor(private readonly disputesService: DisputesService) {}
 
@@ -26,6 +25,7 @@ export class DisputesController {
   }
 
   @Post()
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'worker')
   @ApiOperation({ summary: 'Create a dispute' })
   create(@Body() dto: CreateDisputeDto) {
@@ -33,6 +33,7 @@ export class DisputesController {
   }
 
   @Post(':id/resolve')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('expert', 'superuser')
   @ApiOperation({ summary: 'Resolve a dispute (updates milestone status based on verdict)' })
   resolve(@Param('id') id: string, @Body() dto: ResolveDisputeDto) {

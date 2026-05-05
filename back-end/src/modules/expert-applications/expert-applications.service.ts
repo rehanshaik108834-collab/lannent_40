@@ -54,7 +54,7 @@ export class ExpertApplicationsService {
           this.usersService.create({
             name: app.name,
             email: app.email,
-            password: 'Expert@123',
+            password: app.password || 'Expert@123',
             role: 'expert',
             specialization: app.expertise || '',
           });

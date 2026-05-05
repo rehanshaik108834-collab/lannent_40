@@ -98,7 +98,7 @@
           <td>
             <div class="action-btns">
               <button class="btn-edit" onclick="openEditModal('${t.id}')">Edit</button>
-              <button class="btn-delete" onclick="deleteTask('${t.id}')">Delete</button>
+              ${t.status === 'open' && !t.workerId ? `<button class="btn-delete" onclick="deleteTask('${t.id}')">Delete</button>` : ''}
             </div>
           </td>
         </tr>`;
@@ -174,13 +174,29 @@
     function deleteTask(id) {
       const task = Store.getTaskById(id);
       if (!task) return;
+      if (task.status !== 'open' || task.workerId) {
+        Validate.toast('Only open tasks with no assigned worker can be deleted.', 'error');
+        return;
+      }
       Validate.confirm(
-        `Permanently delete "${task.title}"? All milestones linked to this task will also be affected.`,
+        `Permanently delete "${task.title}"? Escrow funds will be refunded to the client.`,
         () => {
+          // Refund escrow to client
+          if (task.budget && task.budget > 0 && task.clientId) {
+            Store.addToWallet(task.clientId, task.budget);
+            Store.createTransaction({
+              type: 'escrow-refund',
+              amount: task.budget,
+              fromId: 'escrow',
+              toId: task.clientId,
+              taskId: task.id,
+              description: `Escrow refund — task "${task.title}" deleted by admin`,
+            });
+          }
           Store.deleteTask(id);
           allTasks = Store.getTasks();
           renderTasks();
-          Validate.toast('Task deleted.', 'error');
+          Validate.toast('Task deleted. Escrow refunded to client.', 'success');
         }
       );
     }

@@ -62,12 +62,12 @@
           </div>
           <div class="stat-card">
             <div>
-              <div class="stat-val">${user?.rating || 4.9}</div>
-              <div class="stat-label">Rating</div>
-              <div class="stat-change">From 47 reviews</div>
+              <div class="stat-val">${completedProjects}</div>
+              <div class="stat-label">Completed</div>
+              <div class="stat-change">projects done</div>
             </div>
-            <div class="stat-icon-wrap" style="background:#fffbeb;">
-              <i data-lucide="star" style="width:20px;height:20px;color:#f59e0b;"></i>
+            <div class="stat-icon-wrap" style="background:#fff7ed;">
+              <i data-lucide="check-circle" style="width:20px;height:20px;color:#f97316;"></i>
             </div>
           </div>
         </div>
@@ -181,25 +181,6 @@
           </div>
         </div>
 
-        <!-- Performance Summary -->
-        <div style="margin-top:20px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-            <h3 style="font-size:15px;font-weight:600;">Performance Summary</h3>
-            <a href="performance-analytics.html" class="btn-outline" style="font-size:13px;padding:6px 14px;">Full Analytics</a>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-            ${[
-              { label:'On-Time Delivery', val:'94%', color:'#10b981', bg:'#ecfdf5' },
-              { label:'Client Satisfaction', val:'4.9★', color:'#f59e0b', bg:'#fffbeb' },
-              { label:'Acceptance Rate', val:'87%', color:'#6366f1', bg:'#eef2ff' },
-              { label:'Response Time', val:'1.2h', color:'#a855f7', bg:'#faf5ff' },
-            ].map(m => `
-              <div style="padding:16px;border-radius:12px;background:${m.bg};text-align:center;">
-                <div style="font-size:22px;font-weight:900;color:${m.color};margin-bottom:4px;">${m.val}</div>
-                <div style="font-size:12px;color:#64748b;font-weight:500;">${m.label}</div>
-              </div>`).join('')}
-          </div>
-        </div>
       `;
 
       initDashboard({

@@ -249,7 +249,21 @@
       };
 
       window.handleDispute = function() {
-        window.location.href = 'dispute.html?milestoneId=' + encodeURIComponent(milestone.id);
+        // Store milestone + project info so dispute page can display it
+        try {
+          localStorage.setItem('disputeTargetMilestone', JSON.stringify({
+            id: milestone.id,
+            taskId: milestone.taskId,
+            title: milestone.title,
+            amount: milestone.budget || 0,
+            project: task ? task.title : 'Unknown Project',
+            workerId: deliverable.workerId,
+            workerName: deliverable.worker,
+          }));
+        } catch(e) {
+          console.warn('Could not set disputeTargetMilestone in localStorage', e);
+        }
+        window.location.href = 'dispute.html';
       };
     });
   </script>

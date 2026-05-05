@@ -374,6 +374,49 @@
             <div id="expEmail_error" class="field-error-msg" style="display:none;"></div>
           </div>
 
+          <!-- Password -->
+          <div class="form-group" id="grp-expPassword">
+            <label class="form-label" for="expPassword">
+              Password <span style="color:#ef4444;">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <input type="password" class="form-input form-input-pr" placeholder="••••••••" id="expPassword" aria-required="true" autocomplete="new-password" />
+              <button type="button" class="form-input-icon-right" id="toggleExpPw" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted-foreground);">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <div class="pw-strength" id="expPwStrengthWrap" style="display:none;">
+              <div class="pw-strength-bars">
+                <div class="pw-strength-bar" id="expPwBar1"></div>
+                <div class="pw-strength-bar" id="expPwBar2"></div>
+                <div class="pw-strength-bar" id="expPwBar3"></div>
+              </div>
+              <span class="pw-strength-label" id="expPwStrengthLabel"></span>
+            </div>
+            <div class="pw-requirements" id="expPwRequirements" style="display:none;">
+              <div class="pw-req" id="expReqLen"><span class="pw-req-icon">✓</span><span>At least 8 characters</span></div>
+              <div class="pw-req" id="expReqUpper"><span class="pw-req-icon">✓</span><span>One uppercase letter</span></div>
+              <div class="pw-req" id="expReqLower"><span class="pw-req-icon">✓</span><span>One lowercase letter</span></div>
+              <div class="pw-req" id="expReqNum"><span class="pw-req-icon">✓</span><span>One number</span></div>
+              <div class="pw-req" id="expReqSpecial"><span class="pw-req-icon">✓</span><span>One special character (!@#$%^&*)</span></div>
+            </div>
+            <div id="expPassword_error" class="field-error-msg" style="display:none;"></div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group" id="grp-expConfirmPw">
+            <label class="form-label" for="expConfirmPw">
+              Confirm Password <span style="color:#ef4444;">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <input type="password" class="form-input form-input-pr" placeholder="••••••••" id="expConfirmPw" aria-required="true" autocomplete="new-password" />
+              <button type="button" class="form-input-icon-right" id="toggleExpConfirm" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted-foreground);">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <div id="expConfirmPw_error" class="field-error-msg" style="display:none;"></div>
+          </div>
+
           <!-- Phone with Country Code -->
           <div class="form-group" id="grp-expPhone">
             <label class="form-label" for="expPhone">
@@ -588,6 +631,8 @@
       form:         $('expertSignupForm'),
       name:         $('expName'),
       email:        $('expEmail'),
+      password:     $('expPassword'),
+      confirmPw:    $('expConfirmPw'),
       phoneCountry: $('expPhoneCountry'),
       phone:        $('expPhone'),
       phoneHint:    $('expPhoneHint'),
@@ -604,6 +649,89 @@
       submitBtn:    $('expSubmitBtn'),
       submitText:   $('submitBtnText'),
     };
+
+    /* ── Password toggle visibility ── */
+    let showExpPw = false, showExpConfirm = false;
+    $('toggleExpPw').addEventListener('click', () => {
+      showExpPw = !showExpPw;
+      el.password.type = showExpPw ? 'text' : 'password';
+      $('toggleExpPw').innerHTML = showExpPw
+        ? '<i data-lucide="eye-off" style="width:16px;height:16px;"></i>'
+        : '<i data-lucide="eye" style="width:16px;height:16px;"></i>';
+      lucide.createIcons();
+    });
+    $('toggleExpConfirm').addEventListener('click', () => {
+      showExpConfirm = !showExpConfirm;
+      el.confirmPw.type = showExpConfirm ? 'text' : 'password';
+      $('toggleExpConfirm').innerHTML = showExpConfirm
+        ? '<i data-lucide="eye-off" style="width:16px;height:16px;"></i>'
+        : '<i data-lucide="eye" style="width:16px;height:16px;"></i>';
+      lucide.createIcons();
+    });
+
+    /* ── Real-time password strength indicator ── */
+    el.password.addEventListener('input', function () {
+      const val = this.value;
+      const wrap = $('expPwStrengthWrap');
+      const reqWrap = $('expPwRequirements');
+
+      if (val.length === 0) {
+        wrap.style.display = 'none';
+        reqWrap.style.display = 'none';
+        this.classList.remove('input-error', 'input-valid');
+        clearFieldError('expPassword');
+        updateSubmitState();
+        return;
+      }
+      wrap.style.display = '';
+      reqWrap.style.display = '';
+
+      // Strength
+      const { label, level } = Validate.passwordStrength(val);
+      const bars = [$('expPwBar1'), $('expPwBar2'), $('expPwBar3')];
+      const cls = level === 1 ? 'active-weak' : level === 2 ? 'active-medium' : 'active-strong';
+      bars.forEach((b, i) => {
+        b.className = 'pw-strength-bar' + (i < level ? ` ${cls}` : '');
+      });
+      const lbl = $('expPwStrengthLabel');
+      lbl.textContent = label;
+      lbl.className = 'pw-strength-label ' + label.toLowerCase();
+
+      // Requirements checklist
+      const checks = [
+        { id: 'expReqLen', met: val.length >= 8 },
+        { id: 'expReqUpper', met: /[A-Z]/.test(val) },
+        { id: 'expReqLower', met: /[a-z]/.test(val) },
+        { id: 'expReqNum', met: /\d/.test(val) },
+        { id: 'expReqSpecial', met: /[!@#$%^&*]/.test(val) },
+      ];
+      checks.forEach(c => {
+        const reqEl = $(c.id);
+        if (reqEl) reqEl.classList.toggle('met', c.met);
+      });
+
+      clearFieldError('expPassword');
+      this.classList.remove('input-error', 'input-valid');
+
+      // Also re-check confirm match if confirm has value
+      if (el.confirmPw.value) runFieldValidation('expConfirmPw');
+      updateSubmitState();
+    });
+
+    /* ── Real-time confirm password ── */
+    el.confirmPw.addEventListener('input', function () {
+      clearFieldError('expConfirmPw');
+      this.classList.remove('input-error', 'input-valid');
+      const pw = el.password.value;
+      const val = this.value;
+      if (val.length === 0) { updateSubmitState(); return; }
+      if (pw && val === pw) {
+        this.classList.add('input-valid');
+      } else if (val.length > 0) {
+        this.classList.add('input-error');
+      }
+      updateSubmitState();
+    });
 
     /* ────────────────────────────────────────────────
        ERROR HELPERS (per-field, below-field messages)
@@ -735,9 +863,32 @@
     /* ────────────────────────────────────────────────
        FIELD → VALIDATOR MAPPING
     ──────────────────────────────────────────────── */
+    /** 12. Password: required, 8+ chars, upper+lower+digit+special */
+    function validatePassword() {
+      const v = el.password.value;
+      if (!v) return 'Password is required.';
+      if (v.length < 8) return 'Password must be at least 8 characters.';
+      if (!/[A-Z]/.test(v)) return 'Password must contain at least one uppercase letter.';
+      if (!/[a-z]/.test(v)) return 'Password must contain at least one lowercase letter.';
+      if (!/\d/.test(v)) return 'Password must contain at least one number.';
+      if (!/[!@#$%^&*]/.test(v)) return 'Password must contain at least one special character (!@#$%^&*).';
+      return null;
+    }
+
+    /** 13. Confirm Password: must match */
+    function validateConfirmPw() {
+      const pw = el.password.value;
+      const v = el.confirmPw.value;
+      if (!v) return 'Please confirm your password.';
+      if (v !== pw) return 'Passwords do not match.';
+      return null;
+    }
+
     const fieldValidators = {
       expName:       validateName,
       expEmail:      validateEmail,
+      expPassword:   validatePassword,
+      expConfirmPw:  validateConfirmPw,
       expPhone:      validatePhone,
       expCountry:    validateCountry,
       expExpertise:  validateExpertise,
@@ -881,7 +1032,7 @@
        EVENT WIRING: input / change / blur
     ──────────────────────────────────────────────── */
     // Text fields — validate on input (debounced) and blur
-    const textFields = ['expName','expEmail','expPhone','expLinkedin','expGithub','expMotivation'];
+    const textFields = ['expName','expEmail','expPassword','expConfirmPw','expPhone','expLinkedin','expGithub','expMotivation'];
     textFields.forEach(id => {
       const field = $(id);
       if (!field) return;
@@ -938,7 +1089,7 @@
 
       // Run ALL validations with UI
       let firstErrorId = null;
-      const requiredFields = ['expName','expEmail','expPhone','expCountry','expExpertise','expYears','expResume','expMotivation'];
+      const requiredFields = ['expName','expEmail','expPassword','expConfirmPw','expPhone','expCountry','expExpertise','expYears','expResume','expMotivation'];
       const optionalFields = ['expLinkedin','expGithub','expCert'];
       const allFields = [...requiredFields, ...optionalFields];
 
@@ -989,6 +1140,7 @@
       const appData = {
         name: el.name.value.trim(),
         email: el.email.value.trim(),
+        password: el.password.value,
         phone: el.phone.value.trim(),
         phoneCountry: phoneCountry,
         country: el.country.value,

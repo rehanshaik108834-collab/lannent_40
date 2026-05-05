@@ -9,7 +9,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Tasks')
 @Controller('tasks')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
@@ -33,6 +32,7 @@ export class TasksController {
   }
 
   @Post()
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Create a new task' })
   create(@Body() dto: CreateTaskDto) {
@@ -40,6 +40,7 @@ export class TasksController {
   }
 
   @Patch(':id')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Update a task' })
   update(@Param('id') id: string, @Body() dto: UpdateTaskDto) {
@@ -47,6 +48,7 @@ export class TasksController {
   }
 
   @Delete(':id')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Delete a task' })
   remove(@Param('id') id: string) {

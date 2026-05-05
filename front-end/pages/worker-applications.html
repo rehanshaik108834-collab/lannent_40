@@ -34,7 +34,10 @@
       if (typeof Auth === 'undefined' || typeof Store === 'undefined') return [];
       const session = Auth.getCurrentUser();
       if (!session) return [];
-      return Store.getTasksByClient(session.userId).map(t => ({
+      // Only show open tasks — clients can only review proposals and hire for open projects
+      return Store.getTasksByClient(session.userId)
+        .filter(t => t.status === 'open')
+        .map(t => ({
         id: t.id,
         title: t.title,
         description: t.description || '',
@@ -387,6 +390,16 @@
       };
 
       window.confirmHire = function() {
+        // Guard: verify the task is still open before hiring
+        if (typeof Store !== 'undefined') {
+          const task = Store.getTaskById(selectedProjectId);
+          if (task && task.status !== 'open') {
+            document.getElementById('hireModal').style.display = 'none';
+            Validate.toast('This project is no longer open — cannot hire.', 'error');
+            return;
+          }
+        }
+
         document.getElementById('hireModal').style.display = 'none';
 
         // Save to store if it's a store proposal

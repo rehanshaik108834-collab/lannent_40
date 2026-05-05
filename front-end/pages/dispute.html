@@ -77,6 +77,29 @@
 
     try {
       Store.createDispute(disputeData);
+
+      // Notify all expert reviewers about the new dispute
+      const allUsers = Store.getUsers();
+      const experts = allUsers.filter(u => u.role === 'expert' && u.status === 'active');
+      experts.forEach(expert => {
+        Store.addNotification({
+          userId: expert.id,
+          type: 'dispute',
+          text: `New dispute raised: ${disputeData.project}`,
+          subtext: `${disputeData.raisedByName} raised a dispute — ${disputeData.reason}`,
+        });
+      });
+
+      // Also notify the worker being disputed
+      if (disputeData.againstId) {
+        Store.addNotification({
+          userId: disputeData.againstId,
+          type: 'dispute',
+          text: `A dispute has been raised against you`,
+          subtext: `${disputeData.project} — ${disputeData.milestone}: ${disputeData.reason}`,
+        });
+      }
+
       showToast('Dispute submitted successfully.', 'success');
       const redirectTaskId = disputeData.taskId ? `?id=${disputeData.taskId}` : '';
       setTimeout(() => { window.location.href = `project-milestone-board.html${redirectTaskId}`; }, 1300);

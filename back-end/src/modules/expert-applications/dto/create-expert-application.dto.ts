@@ -10,6 +10,10 @@ export class CreateExpertApplicationDto {
   @IsString()
   email: string;
 
+  @ApiPropertyOptional({ example: 'Expert@123' })
+  @IsOptional() @IsString()
+  password?: string;
+
   @ApiPropertyOptional({ example: '9876543210' })
   @IsOptional() @IsString()
   phone?: string;

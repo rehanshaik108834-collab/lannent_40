@@ -45,8 +45,6 @@ async function bootstrap() {
       'Include "role" and "user-id" headers for RBAC.',
     )
     .setVersion('1.0')
-    .addApiKey({ type: 'apiKey', name: 'role', in: 'header', description: 'User role (client, worker, expert, superuser)' }, 'role')
-    .addApiKey({ type: 'apiKey', name: 'user-id', in: 'header', description: 'Current user ID' }, 'user-id')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

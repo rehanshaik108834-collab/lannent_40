@@ -11,8 +11,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Users')
 @Controller('users')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role (client, worker, expert, superuser)' })
-@ApiHeader({ name: 'user-id', required: false, description: 'Current user ID' })
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -43,6 +41,7 @@ export class UsersController {
   }
 
   @Patch(':id')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'worker', 'expert', 'superuser')
   @ApiOperation({ summary: 'Update user profile' })
   update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
@@ -50,6 +49,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('superuser')
   @ApiOperation({ summary: 'Delete a user (superuser only)' })
   remove(@Param('id') id: string) {
@@ -57,6 +57,7 @@ export class UsersController {
   }
 
   @Post(':id/wallet/add')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'worker', 'superuser')
   @ApiOperation({ summary: 'Add funds to user wallet' })
   addToWallet(@Param('id') id: string, @Body() dto: WalletDto) {
@@ -64,6 +65,7 @@ export class UsersController {
   }
 
   @Post(':id/wallet/deduct')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('client', 'superuser')
   @ApiOperation({ summary: 'Deduct funds from user wallet' })
   deductFromWallet(@Param('id') id: string, @Body() dto: WalletDto) {

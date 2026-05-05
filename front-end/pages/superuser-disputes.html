@@ -95,7 +95,16 @@
       Validate.confirm(
         `Apply verdict: "${verdict.replace(/-/g,' ')}"? ${verdictLabels[verdict]}.`,
         () => {
+          const d = Store.getDisputeById(disputeId);
           Store.resolveDispute(disputeId, { verdict, resolution: verdictLabels[verdict], expertId: Auth.getCurrentUser()?.userId || 'u4' });
+          // Notify both parties
+          const vLabel = verdict === 'worker-favour' ? 'in favour of the Worker' : verdict === 'client-favour' ? 'in favour of the Client' : 'with a 50/50 split';
+          if (d && d.raisedBy) {
+            Store.addNotification({ userId: d.raisedBy, type: 'dispute-resolved', text: `Dispute resolved: ${d.project}`, subtext: `Verdict ${vLabel}` });
+          }
+          if (d && d.againstId) {
+            Store.addNotification({ userId: d.againstId, type: 'dispute-resolved', text: `Dispute resolved: ${d.project}`, subtext: `Verdict ${vLabel}` });
+          }
           Validate.toast('Dispute resolved successfully.', 'success');
           const filter = document.getElementById('statusFilterD')?.value || 'all';
           renderDisputes(filter);
@@ -128,7 +137,16 @@
       ]);
       if (!valid) return;
 
+      const d = Store.getDisputeById(activeDisputeId);
       Store.resolveDispute(activeDisputeId, { verdict, resolution, expertId: Auth.getCurrentUser()?.userId || 'u4' });
+      // Notify both parties
+      const vLabel = verdict === 'worker-favour' ? 'in favour of the Worker' : verdict === 'client-favour' ? 'in favour of the Client' : 'with a 50/50 split';
+      if (d && d.raisedBy) {
+        Store.addNotification({ userId: d.raisedBy, type: 'dispute-resolved', text: `Dispute resolved: ${d.project}`, subtext: `Verdict ${vLabel}` });
+      }
+      if (d && d.againstId) {
+        Store.addNotification({ userId: d.againstId, type: 'dispute-resolved', text: `Dispute resolved: ${d.project}`, subtext: `Verdict ${vLabel}` });
+      }
       closeOverrideModal();
       Validate.toast('Dispute override applied.', 'success');
       const filter = document.getElementById('statusFilterD')?.value || 'all';

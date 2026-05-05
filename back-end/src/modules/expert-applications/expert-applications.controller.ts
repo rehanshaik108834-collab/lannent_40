@@ -9,7 +9,6 @@ import { Roles } from '../../common/decorators/roles.decorator';
 @ApiTags('Expert Applications')
 @Controller('expert-applications')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class ExpertApplicationsController {
   constructor(private readonly expertApplicationsService: ExpertApplicationsService) {}
 
@@ -32,6 +31,7 @@ export class ExpertApplicationsController {
   }
 
   @Patch(':id/status')
+  @ApiHeader({ name: 'role', required: true, description: 'User role required' })
   @Roles('superuser')
   @ApiOperation({ summary: 'Approve or reject expert application (auto-creates user on approval)' })
   updateStatus(@Param('id') id: string, @Body() dto: UpdateExpertApplicationStatusDto) {

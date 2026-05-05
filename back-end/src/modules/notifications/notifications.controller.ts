@@ -7,7 +7,6 @@ import { RoleGuard } from '../../common/guards/role.guard';
 @ApiTags('Notifications')
 @Controller('notifications')
 @UseGuards(RoleGuard)
-@ApiHeader({ name: 'role', required: false, description: 'User role' })
 export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}
 
