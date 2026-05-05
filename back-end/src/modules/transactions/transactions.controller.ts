@@ -20,7 +20,7 @@ export class TransactionsController {
 
   @Post()
   @ApiHeader({ name: 'role', required: true, description: 'User role required' })
-  @Roles('client', 'superuser')
+  @Roles('client', 'superuser', 'worker')
   @ApiOperation({ summary: 'Create a transaction' })
   create(@Body() dto: CreateTransactionDto) {
     return this.transactionsService.create(dto);
